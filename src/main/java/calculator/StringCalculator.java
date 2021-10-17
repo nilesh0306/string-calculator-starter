@@ -2,6 +2,8 @@
 package calculator;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class StringCalculator {
 	static int count = 0;
@@ -35,7 +37,9 @@ count++;
     	   }
       }
     private static String[] split(String str)
-	{     if (str.startsWith("//")) {
+	{   if(str.startsWith("//["))
+		return splitMulCustomDelWithAnyLength(str);
+    	if (str.startsWith("//")) {
         String delimiter = str.substring(2, 3);
         return str.substring(4).split(delimiter);
     }
@@ -44,9 +48,30 @@ count++;
 		return nums;
 	}
 
-    public int getCallCount() {
+    private static String[] splitMulCustomDelWithAnyLength(String str) {
+		Matcher m = Pattern.compile("//(\\[.+\\])+\n(.*)").matcher(str);
+		m.matches();
+		String del = m.group(1);
+		String delimeters = new String();
+		
+		int l = del.length(),last =0;
+		for(int i =0; i<l ; i++) {
+			if(del.charAt(i) == ']' && i != l-1) {	
+				delimeters += del.substring(last,i);
+				delimeters += "]|";
+				last = i+1;
+			}
+			else if(i == l-1)
+				delimeters += del.substring(last,i) + "]";
+		}
+		String nums = m.group(2);
+		
+		return nums.split(delimeters); 
+	}
+	
+	public int getCallCount() {
 		return count;
 	}
-
+    
 
 }

@@ -27,7 +27,7 @@ class StringCalculatorShould {
   public void addUnknownAmountOfNumber() throws Exception {
       StringCalculator calculator = new StringCalculator();
       assertEquals(13, calculator.add("1,2,5,3,2"));
-
+ 
   }
   @Test
 	public void acceptNewlineAsValidDelimiter() throws Exception
@@ -51,7 +51,7 @@ class StringCalculatorShould {
       }
   }
 
-  @Test
+  @Test 
 	public void multipleNegativeNumbers() throws Exception
 	{
 		try {
@@ -74,5 +74,11 @@ class StringCalculatorShould {
 	{
 		assertEquals(2, calculator.add("2,1001"));
 	}
+  @Test
+	public void validateAnyLengthDelimeter() throws Exception
+	{
+		assertEquals(6, calculator.add("//[***]\n1***2***3"));
+	}
+ 
 
 }
