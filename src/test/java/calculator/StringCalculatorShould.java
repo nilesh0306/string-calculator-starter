@@ -22,6 +22,13 @@ class StringCalculatorShould {
       StringCalculator calculator = new StringCalculator();
       assertEquals(3, calculator.add("1,2"));
   }
+  @Test
+  public void addUnknownAmountOfNumber() throws Exception {
+      StringCalculator calculator = new StringCalculator();
+      assertEquals(13, calculator.add("1,2,5,3,2"));
+
+  }
+
 
 
 }
