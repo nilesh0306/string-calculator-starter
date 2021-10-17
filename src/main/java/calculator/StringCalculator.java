@@ -24,7 +24,8 @@ count++;
     			   if(Integer.parseInt(num)<0) {
     				   list.add((Integer.parseInt(num)));
 				         // throw new StringCalculatorException("negatives not allowed "+num);
-    			   }
+    			   }else if(Integer.parseInt(num)>1000)
+    				   num="0";
     	            sum += Integer.parseInt(num);
     	        }
     		   if(list.size()>0)
