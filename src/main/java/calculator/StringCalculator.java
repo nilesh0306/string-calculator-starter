@@ -4,9 +4,11 @@ package calculator;
 import java.util.ArrayList;
 
 class StringCalculator {
-	
+	static int count = 0;
+
 
 	public int add(String input) throws Exception {
+count++;
 		ArrayList<Integer> list = new ArrayList<>();
     	//if string is empty it returns 0
     	int sum=0;
@@ -41,6 +43,9 @@ class StringCalculator {
 		return nums;
 	}
 
+    public int getCallCount() {
+		return count;
+	}
 
 
 }

@@ -64,6 +64,10 @@ class StringCalculatorShould {
 		}
 	}
 
+  @Test
+	public void validateCallCount(){
+		assertEquals(calculator.getCallCount(), calculator.count);
+	}
 
 
 }
