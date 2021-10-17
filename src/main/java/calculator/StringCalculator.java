@@ -2,7 +2,7 @@ package calculator;
 
 class StringCalculator {
 
-	public int add(String input) {
+	public int add(String input) throws Exception {
     	//if string is empty it returns 0
     	int sum=0;
        if(input.isEmpty())
@@ -14,11 +14,14 @@ class StringCalculator {
     		   String[] nums = StringCalculator.split(input);
     		  
     		   for (String num : nums) {
+    			   if(Integer.parseInt(num)<0) {
+				          throw new StringCalculatorException("negatives not allowed "+num);
+    			   }
     	            sum += Integer.parseInt(num);
     	        }
     		   return sum;
     	   }
-         }
+    	   }
       }
     private static String[] split(String str)
 	{     if (str.startsWith("//")) {
