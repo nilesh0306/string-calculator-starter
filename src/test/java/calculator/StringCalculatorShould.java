@@ -84,4 +84,8 @@ class StringCalculatorShould {
 	public void multipleDelimeter() throws Exception	{
 		assertEquals(6, calculator.add("//[*][%]\n1*2%3"));
 	}
+  @Test
+	public void mulCustomDelWithAnyLength() throws Exception {
+		assertEquals(6, calculator.add("//[*][%%]\n1*2%%3"));
+	}
 }
